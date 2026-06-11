@@ -1,0 +1,24 @@
+{
+  "name": "predictx-contracts",
+  "version": "1.0.0",
+  "description": "PredictX smart contracts for X1 EcoChain",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network x1testnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network x1mainnet",
+    "verify:testnet": "hardhat run scripts/verify.js --network x1testnet",
+    "lint": "solhint 'contracts/**/*.sol'"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "hardhat": "^2.22.0",
+    "solhint": "^5.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0"
+  }
+}

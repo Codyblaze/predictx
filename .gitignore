@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+frontend/.env.local
+frontend/.env.*.local
+!.env.local.example
+!frontend/.env.local.example
+*.pem
+*.key
+
+# Next.js
+frontend/.next/
+frontend/out/
+.vercel/
+
+# Hardhat
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain-types/
+deployments/
+
+# Private / personal
+deck/grant-application-answers.md
+private/
+
+# OS and logs
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# Editor
+.idea/

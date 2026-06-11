@@ -1,0 +1,183 @@
+export const MARKET_FACTORY_ABI = [
+  {
+    inputs: [{ internalType: "address", name: "_defaultOracle", type: "address" }],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "market", type: "address" },
+      { indexed: true, internalType: "address", name: "creator", type: "address" },
+      { indexed: false, internalType: "string", name: "question", type: "string" },
+      { indexed: false, internalType: "string", name: "category", type: "string" },
+      { indexed: false, internalType: "uint256", name: "closingTime", type: "uint256" },
+    ],
+    name: "MarketCreated",
+    type: "event",
+  },
+  {
+    inputs: [
+      { internalType: "string", name: "_question", type: "string" },
+      { internalType: "string", name: "_category", type: "string" },
+      { internalType: "uint256", name: "_closingTime", type: "uint256" },
+    ],
+    name: "createMarket",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getMarketCount",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "uint256", name: "offset", type: "uint256" },
+      { internalType: "uint256", name: "limit", type: "uint256" },
+    ],
+    name: "getMarkets",
+    outputs: [
+      {
+        components: [
+          { internalType: "address", name: "market", type: "address" },
+          { internalType: "address", name: "creator", type: "address" },
+          { internalType: "string", name: "question", type: "string" },
+          { internalType: "string", name: "category", type: "string" },
+          { internalType: "uint256", name: "closingTime", type: "uint256" },
+          { internalType: "uint256", name: "createdAt", type: "uint256" },
+        ],
+        internalType: "struct MarketFactory.MarketInfo[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "creator", type: "address" }],
+    name: "getMarketsByCreator",
+    outputs: [{ internalType: "address[]", name: "", type: "address[]" }],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export const PREDICTION_MARKET_ABI = [
+  {
+    inputs: [],
+    name: "betYes",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "betNo",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "claimWinnings",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "question",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "category",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "closingTime",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalYes",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalNo",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "outcome",
+    outputs: [{ internalType: "uint8", name: "", type: "uint8" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getMarketStats",
+    outputs: [
+      { internalType: "uint256", name: "_totalYes", type: "uint256" },
+      { internalType: "uint256", name: "_totalNo", type: "uint256" },
+      { internalType: "uint256", name: "_totalPool", type: "uint256" },
+      { internalType: "uint8", name: "_outcome", type: "uint8" },
+      { internalType: "bool", name: "_isOpen", type: "bool" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "bettor", type: "address" }],
+    name: "getPayout",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "bets",
+    outputs: [
+      { internalType: "uint256", name: "yesAmount", type: "uint256" },
+      { internalType: "uint256", name: "noAmount", type: "uint256" },
+      { internalType: "bool", name: "claimed", type: "bool" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: true, internalType: "address", name: "bettor", type: "address" },
+      { indexed: false, internalType: "bool", name: "isYes", type: "bool" },
+      { indexed: false, internalType: "uint256", name: "amount", type: "uint256" },
+    ],
+    name: "BetPlaced",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      { indexed: false, internalType: "uint8", name: "outcome", type: "uint8" },
+    ],
+    name: "MarketResolved",
+    type: "event",
+  },
+] as const;
