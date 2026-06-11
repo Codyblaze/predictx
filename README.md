@@ -11,7 +11,7 @@ contracts/          Solidity smart contracts (EVM-compatible)
 frontend/           Next.js 14 + TailwindCSS + wagmi dApp
 scripts/            Hardhat deployment & verification scripts
 test/               Contract unit tests (Hardhat + ethers)
-deck/               Pitch deck and deployment guides
+audit/              Security audit report
 ```
 
 ## Smart Contracts

@@ -26,8 +26,8 @@ coverage.json
 typechain-types/
 deployments/
 
-# Private / personal
-deck/grant-application-answers.md
+# Private / internal (grant, pitch deck, GTM — local only)
+deck/
 private/
 
 # OS and logs

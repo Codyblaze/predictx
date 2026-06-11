@@ -112,4 +112,4 @@ For mainnet launch, a manual audit is commissioned through **Hashlock** (an exis
 
 ---
 
-*Report published at: https://github.com/[YOUR_USERNAME]/predictx/blob/main/audit/audit-report.md*
+*Report published at: https://github.com/Codyblaze/predictx/blob/main/audit/audit-report.md*
