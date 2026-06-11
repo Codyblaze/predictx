@@ -19,8 +19,8 @@ module.exports = {
       chainId: 31337,
     },
     x1testnet: {
-      url: process.env.X1_TESTNET_RPC || "https://rpc-testnet.x1ecochain.com",
-      chainId: 204005,
+      url: process.env.X1_TESTNET_RPC || "https://maculatus-rpc.x1eco.com",
+      chainId: 10778,
       accounts: [PRIVATE_KEY],
       gasPrice: "auto",
     },
