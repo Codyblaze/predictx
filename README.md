@@ -33,7 +33,7 @@ deck/               Pitch deck and deployment guides
 
 | Network | Chain ID | RPC | Explorer |
 |---|---|---|---|
-| Maculatus Testnet | 204005 | `https://rpc-testnet.x1ecochain.com` | `https://explorer-testnet.x1ecochain.com` |
+| Maculatus Testnet | 10778 | `https://maculatus-rpc.x1eco.com` | `https://maculatus-scan.x1eco.com` |
 | Mainnet | 204004 | `https://rpc.x1ecochain.com` | `https://scan.x1ecochain.com` |
 
 ## Quick Start
@@ -54,11 +54,11 @@ npm run dev
 ```env
 # .env (contracts)
 PRIVATE_KEY=your_deployer_private_key
-X1_TESTNET_RPC=https://rpc-testnet.x1ecochain.com
+X1_TESTNET_RPC=https://maculatus-rpc.x1eco.com
 X1_MAINNET_RPC=https://rpc.x1ecochain.com
 
 # frontend/.env.local
-NEXT_PUBLIC_CHAIN_ID=204005
+NEXT_PUBLIC_CHAIN_ID=10778
 NEXT_PUBLIC_MARKET_FACTORY_ADDRESS=0x...deployed_address
 OPENAI_API_KEY=sk-...
 ```

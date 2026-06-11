@@ -57,7 +57,7 @@ npm run deploy:testnet
 2. Set **Root Directory** to `frontend`
 3. Add environment variables:
    ```
-   NEXT_PUBLIC_CHAIN_ID=204005
+   NEXT_PUBLIC_CHAIN_ID=10778
    NEXT_PUBLIC_MARKET_FACTORY_ADDRESS=0x...from_step_4
    NEXT_PUBLIC_ORACLE_ADDRESS=0x...from_step_4
    NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=...from_walletconnect.com

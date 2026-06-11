@@ -4,11 +4,11 @@
 
 1. Install MetaMask (https://metamask.io) if you don't have it
 2. Add X1 Maculatus Testnet to MetaMask:
-   - Network Name: `X1 EcoChain Testnet`
-   - RPC URL: `https://rpc-testnet.x1ecochain.com`
-   - Chain ID: `204005`
-   - Currency Symbol: `X1`
-   - Block Explorer: `https://explorer-testnet.x1ecochain.com`
+   - Network Name: `X1 Maculatus Testnet`
+   - RPC URL: `https://maculatus-rpc.x1eco.com`
+   - Chain ID: `10778`
+   - Currency Symbol: `X1T`
+   - Block Explorer: `https://maculatus-scan.x1eco.com`
 3. Copy your wallet address
 4. Go to https://dev.x1ecochain.com → "Testnet Coin" faucet → request coins
 5. Verify balance in MetaMask (should receive testnet X1)
@@ -27,7 +27,7 @@ cp .env.example .env
 Edit `.env`:
 ```
 PRIVATE_KEY=0x[YOUR_METAMASK_PRIVATE_KEY]
-X1_TESTNET_RPC=https://rpc-testnet.x1ecochain.com
+X1_TESTNET_RPC=https://maculatus-rpc.x1eco.com
 X1_MAINNET_RPC=https://rpc.x1ecochain.com
 ```
 
@@ -67,14 +67,14 @@ Deployment saved to: deployments/x1testnet.json
 --- Add to frontend/.env.local ---
 NEXT_PUBLIC_MARKET_FACTORY_ADDRESS=0xBBB...
 NEXT_PUBLIC_ORACLE_ADDRESS=0xAAA...
-NEXT_PUBLIC_CHAIN_ID=204005
+NEXT_PUBLIC_CHAIN_ID=10778
 ```
 
 ---
 
 ## Step 4 — Verify on the testnet explorer
 
-1. Go to https://explorer-testnet.x1ecochain.com
+1. Go to https://maculatus-scan.x1eco.com
 2. Search for your `MarketFactory` address
 3. Screenshot the deployed contract for grant evidence
 
@@ -85,7 +85,7 @@ NEXT_PUBLIC_CHAIN_ID=204005
 Create `frontend/.env.local` from the deploy output:
 
 ```env
-NEXT_PUBLIC_CHAIN_ID=204005
+NEXT_PUBLIC_CHAIN_ID=10778
 NEXT_PUBLIC_MARKET_FACTORY_ADDRESS=0xBBB...YOUR_FACTORY_ADDRESS
 NEXT_PUBLIC_ORACLE_ADDRESS=0xAAA...YOUR_ORACLE_ADDRESS
 NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_project_id_from_walletconnect_cloud

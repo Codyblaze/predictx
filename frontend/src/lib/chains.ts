@@ -1,16 +1,18 @@
 import { defineChain } from "viem";
 
+export const MACULATUS_CHAIN_ID = 10778;
+
 export const x1Testnet = defineChain({
-  id: 204005,
-  name: "X1 EcoChain Testnet",
-  nativeCurrency: { name: "X1", symbol: "X1", decimals: 18 },
+  id: MACULATUS_CHAIN_ID,
+  name: "X1 Maculatus Testnet",
+  nativeCurrency: { name: "X1T", symbol: "X1T", decimals: 18 },
   rpcUrls: {
-    default: { http: ["https://rpc-testnet.x1ecochain.com"] },
+    default: { http: ["https://maculatus-rpc.x1eco.com"] },
   },
   blockExplorers: {
     default: {
-      name: "X1 Testnet Explorer",
-      url: "https://explorer-testnet.x1ecochain.com",
+      name: "Maculatus Scan",
+      url: "https://maculatus-scan.x1eco.com",
     },
   },
   testnet: true,

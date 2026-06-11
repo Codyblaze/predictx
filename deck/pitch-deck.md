@@ -69,7 +69,7 @@ Smart Contracts   Solidity ^0.8.24 + OpenZeppelin + Hardhat
 Frontend          Next.js 14, TailwindCSS, wagmi v2, RainbowKit
 AI                OpenAI GPT-4o-mini (serverless route)
 Hosting           Vercel (frontend) + X1 Maculatus Testnet
-Chain             X1 EcoChain (EVM, PoA, Chain ID 204005/204004)
+Chain             X1 EcoChain (EVM, PoA, Chain ID 10778/204004)
 ```
 
 ---

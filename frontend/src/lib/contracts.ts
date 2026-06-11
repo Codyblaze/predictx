@@ -1,8 +1,12 @@
+import { MACULATUS_CHAIN_ID } from "./chains";
+
 export const MARKET_FACTORY_ADDRESS =
   (process.env.NEXT_PUBLIC_MARKET_FACTORY_ADDRESS as `0x${string}`) ||
   "0x0000000000000000000000000000000000000000";
 
-export const CHAIN_ID = Number(process.env.NEXT_PUBLIC_CHAIN_ID || "204005");
+export const CHAIN_ID = Number(
+  process.env.NEXT_PUBLIC_CHAIN_ID || String(MACULATUS_CHAIN_ID)
+);
 
 export const OUTCOME_LABELS: Record<number, string> = {
   0: "Unresolved",
@@ -20,15 +24,15 @@ export const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export function explorerTxUrl(hash: string, chainId: number): string {
-  if (chainId === 204005) {
-    return `https://explorer-testnet.x1ecochain.com/tx/${hash}`;
+  if (chainId === MACULATUS_CHAIN_ID) {
+    return `https://maculatus-scan.x1eco.com/tx/${hash}`;
   }
   return `https://scan.x1ecochain.com/tx/${hash}`;
 }
 
 export function explorerAddressUrl(address: string, chainId: number): string {
-  if (chainId === 204005) {
-    return `https://explorer-testnet.x1ecochain.com/address/${address}`;
+  if (chainId === MACULATUS_CHAIN_ID) {
+    return `https://maculatus-scan.x1eco.com/address/${address}`;
   }
   return `https://scan.x1ecochain.com/address/${address}`;
 }
