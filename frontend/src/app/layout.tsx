@@ -10,10 +10,19 @@ export const metadata: Metadata = {
   title: "PredictX — AI-Powered Prediction Markets on X1 EcoChain",
   description:
     "Create and trade binary prediction markets on X1 EcoChain. AI-powered probability scoring, sub-cent fees, instant finality.",
+  metadataBase: new URL("https://predictx1.com"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+  },
   openGraph: {
     title: "PredictX",
     description: "Decentralized prediction markets powered by AI on X1 EcoChain",
     siteName: "PredictX",
+    url: "https://predictx1.com",
   },
 };
 
