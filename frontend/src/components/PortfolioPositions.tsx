@@ -268,7 +268,11 @@ export function PortfolioPositions() {
                               : "text-x1-muted bg-x1-muted/10"
                           )}
                         >
-                          {pos.isOpen ? "Open" : OUTCOME_LABELS[pos.outcome]}
+                          {pos.isOpen
+                            ? "Open"
+                            : pos.outcome === 0
+                            ? "Awaiting resolution"
+                            : OUTCOME_LABELS[pos.outcome]}
                         </span>
                       </td>
                       <td className="py-4 pr-4 whitespace-nowrap">

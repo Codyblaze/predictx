@@ -16,6 +16,7 @@ import { AIProbabilityBadge } from "./AIProbabilityBadge";
 import { AIEdgeIndicator } from "./AIEdgeIndicator";
 import { ShareMarket } from "./ShareMarket";
 import { BettingPanel } from "./BettingPanel";
+import { ResolverPanel } from "./ResolverPanel";
 import { ProbabilityChart } from "./ProbabilityChart";
 import clsx from "clsx";
 
@@ -188,7 +189,7 @@ export function MarketDetail({ address }: Props) {
           <ProbabilityChart yesPercent={yesPercent} />
         </div>
 
-        <div>
+        <div className="space-y-4">
           <BettingPanel
             marketAddress={address}
             isOpen={isOpen}
@@ -196,6 +197,11 @@ export function MarketDetail({ address }: Props) {
             userYesBet={userYesBet ?? 0n}
             userNoBet={userNoBet ?? 0n}
             payout={(payout as bigint | undefined) ?? 0n}
+          />
+          <ResolverPanel
+            marketAddress={address}
+            outcome={outcome}
+            isOpen={isOpen}
           />
         </div>
       </div>

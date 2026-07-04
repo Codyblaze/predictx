@@ -2,7 +2,11 @@ import { MACULATUS_CHAIN_ID } from "./chains";
 
 export const MARKET_FACTORY_ADDRESS =
   (process.env.NEXT_PUBLIC_MARKET_FACTORY_ADDRESS as `0x${string}`) ||
-  "0x0000000000000000000000000000000000000000";
+  "0xF99C07d08dfDA19DDb6640008386d9b67e327ED3";
+
+export const ORACLE_ADDRESS =
+  (process.env.NEXT_PUBLIC_ORACLE_ADDRESS as `0x${string}`) ||
+  "0x9811DA5da02cb74A2C66406abE1f506D53C216d2";
 
 export const CHAIN_ID = Number(
   process.env.NEXT_PUBLIC_CHAIN_ID || String(MACULATUS_CHAIN_ID)

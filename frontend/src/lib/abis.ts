@@ -181,3 +181,54 @@ export const PREDICTION_MARKET_ABI = [
     type: "event",
   },
 ] as const;
+
+export const MOCK_ORACLE_ABI = [
+  {
+    inputs: [{ internalType: "address", name: "resolver", type: "address" }],
+    name: "addResolver",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address[]", name: "_markets", type: "address[]" },
+      { internalType: "bool[]", name: "_outcomes", type: "bool[]" },
+    ],
+    name: "batchResolve",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "market", type: "address" }],
+    name: "cancelMarket",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "resolver", type: "address" }],
+    name: "removeResolver",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "resolvers",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "market", type: "address" },
+      { internalType: "bool", name: "yesWon", type: "bool" },
+    ],
+    name: "resolveMarket",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+] as const;
