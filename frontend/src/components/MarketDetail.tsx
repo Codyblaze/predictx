@@ -172,8 +172,6 @@ export function MarketDetail({ address }: Props) {
             <AIProbabilityBadge
               question={question}
               category={category ?? "general"}
-              totalYes={BigInt(totalYes)}
-              totalNo={BigInt(totalNo)}
               onScoreLoaded={(score) => {
                 setAiYesPercent(score.yesProbability);
                 setAiLoading(false);

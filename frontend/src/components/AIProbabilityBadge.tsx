@@ -6,16 +6,12 @@ import type { AiScore } from "@/types";
 interface Props {
   question: string;
   category: string;
-  totalYes: bigint;
-  totalNo: bigint;
   onScoreLoaded?: (score: Omit<AiScore, "loading">) => void;
 }
 
 export function AIProbabilityBadge({
   question,
   category,
-  totalYes,
-  totalNo,
   onScoreLoaded,
 }: Props) {
   const [score, setScore] = useState<AiScore>({
@@ -37,8 +33,6 @@ export function AIProbabilityBadge({
           body: JSON.stringify({
             question,
             category,
-            totalYes: totalYes.toString(),
-            totalNo: totalNo.toString(),
           }),
         });
 
@@ -59,7 +53,7 @@ export function AIProbabilityBadge({
 
     fetchScore();
     return () => { cancelled = true; };
-  }, [question, category, totalYes, totalNo, onScoreLoaded]);
+  }, [question, category, onScoreLoaded]);
 
   if (score.loading) {
     return (

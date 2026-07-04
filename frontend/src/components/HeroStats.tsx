@@ -3,6 +3,7 @@
 import { useReadContract } from "wagmi";
 import { MARKET_FACTORY_ABI } from "@/lib/abis";
 import { MARKET_FACTORY_ADDRESS } from "@/lib/contracts";
+import { useAvgBetGas } from "@/hooks/useAvgBetGas";
 
 export function HeroStats() {
   const { data: count } = useReadContract({
@@ -11,10 +12,15 @@ export function HeroStats() {
     functionName: "getMarketCount",
   });
 
+  const { formatted: gasFormatted, isLoading: gasLoading } = useAvgBetGas();
+
   const stats = [
     { label: "Active Markets", value: count != null ? String(count) : "—" },
-    { label: "Chain", value: "X1 EcoChain" },
-    { label: "Avg Gas", value: "~$0.01" },
+    { label: "Chain", value: "X1 Maculatus" },
+    {
+      label: "Avg Gas (bet)",
+      value: gasLoading ? "—" : gasFormatted ?? "—",
+    },
     { label: "Protocol Fee", value: "2%" },
   ];
 

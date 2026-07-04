@@ -1,7 +1,7 @@
 import { MarketList } from "@/components/MarketList";
 import { HeroStats } from "@/components/HeroStats";
+import { FeatureCards } from "@/components/FeatureCards";
 import Link from "next/link";
-
 export default function HomePage() {
   return (
     <div className="space-y-10">
@@ -44,31 +44,7 @@ export default function HomePage() {
         <MarketList limit={6} />
       </section>
 
-      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {[
-          {
-            icon: "🤖",
-            title: "AI Probability Scoring",
-            desc: "Every market gets real-time YES/NO probability estimates powered by GPT-4o-mini sentiment analysis.",
-          },
-          {
-            icon: "⚡",
-            title: "Sub-cent Fees on X1",
-            desc: "X1 EcoChain's Proof-of-Nodes consensus delivers ~0.01$ average gas — bet freely without friction.",
-          },
-          {
-            icon: "🔒",
-            title: "Non-Custodial Escrow",
-            desc: "Funds are locked in audited smart contracts. No admin keys. Winners claim trustlessly.",
-          },
-        ].map((f) => (
-          <div key={f.title} className="card space-y-3">
-            <div className="text-3xl">{f.icon}</div>
-            <h3 className="font-semibold text-lg">{f.title}</h3>
-            <p className="text-x1-muted text-sm leading-relaxed">{f.desc}</p>
-          </div>
-        ))}
-      </section>
+      <FeatureCards />
     </div>
   );
 }

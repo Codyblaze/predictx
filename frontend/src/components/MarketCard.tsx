@@ -79,8 +79,6 @@ export function MarketCard({ info }: { info: MarketInfo }) {
         <AIProbabilityBadge
           question={info.question}
           category={info.category}
-          totalYes={BigInt(totalYes)}
-          totalNo={BigInt(totalNo)}
         />
 
         <p className="text-xs text-x1-muted">

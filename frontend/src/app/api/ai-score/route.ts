@@ -4,7 +4,8 @@ import OpenAI from "openai";
 export const dynamic = "force-dynamic";
 
 const SYSTEM_PROMPT = `You are a prediction market analyst. Given a YES/NO prediction market question,
-you analyze available information and provide a probability estimate.
+you provide an independent probability estimate based on real-world information only.
+Do not assume or mirror any betting market odds — you have no knowledge of current wagers.
 Always respond with ONLY valid JSON in this exact format:
 {
   "yesProbability": <number 0-100>,
@@ -20,23 +21,16 @@ export async function POST(req: NextRequest) {
   }
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   try {
-    const { question, category, totalYes, totalNo } = await req.json();
+    const { question, category } = await req.json();
 
     if (!question) {
       return NextResponse.json({ error: "question required" }, { status: 400 });
     }
 
-    const totalPool = (Number(totalYes) || 0) + (Number(totalNo) || 0);
-    const marketContext =
-      totalPool > 0
-        ? `Current market: ${((Number(totalYes) / totalPool) * 100).toFixed(1)}% YES vs ${((Number(totalNo) / totalPool) * 100).toFixed(1)}% NO (pool: ${totalPool} wei)`
-        : "No bets placed yet.";
-
     const userMessage = `Question: "${question}"
 Category: ${category || "general"}
-${marketContext}
 
-Analyze this prediction market and provide a probability estimate.`;
+Provide an independent probability estimate for this prediction market.`;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
