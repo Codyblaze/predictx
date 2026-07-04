@@ -1,21 +1,17 @@
 "use client";
 
-import { useReadContract } from "wagmi";
-import { MARKET_FACTORY_ABI } from "@/lib/abis";
-import { MARKET_FACTORY_ADDRESS } from "@/lib/contracts";
 import { useAvgBetGas } from "@/hooks/useAvgBetGas";
+import { useOpenMarketCount } from "@/hooks/useOpenMarketCount";
 
 export function HeroStats() {
-  const { data: count } = useReadContract({
-    address: MARKET_FACTORY_ADDRESS,
-    abi: MARKET_FACTORY_ABI,
-    functionName: "getMarketCount",
-  });
-
+  const { count, isLoading: countLoading } = useOpenMarketCount();
   const { formatted: gasFormatted, isLoading: gasLoading } = useAvgBetGas();
 
   const stats = [
-    { label: "Active Markets", value: count != null ? String(count) : "—" },
+    {
+      label: "Active Markets",
+      value: countLoading ? "—" : count != null ? String(count) : "—",
+    },
     { label: "Chain", value: "X1 Maculatus" },
     {
       label: "Avg Gas (bet)",
