@@ -8,7 +8,7 @@ export default function HomePage() {
       <section className="text-center space-y-6 pt-8 pb-4">
         <div className="inline-flex items-center gap-2 bg-x1-green/10 border border-x1-green/30 rounded-full px-4 py-1.5 text-x1-green text-sm font-medium">
           <span className="w-2 h-2 rounded-full bg-x1-green animate-pulse" />
-          Live on X1 EcoChain Testnet
+          Live on X1 Maculatus Testnet
         </div>
 
         <h1 className="text-5xl sm:text-6xl font-bold tracking-tight">

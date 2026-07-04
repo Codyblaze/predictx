@@ -1,11 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { useReadContract, useAccount } from "wagmi";
 import { formatEther } from "viem";
 import { formatDistanceToNow } from "date-fns";
 import { PREDICTION_MARKET_ABI } from "@/lib/abis";
-import { CATEGORY_COLORS, OUTCOME_LABELS, explorerAddressUrl, CHAIN_ID } from "@/lib/contracts";
+import {
+  CATEGORY_COLORS,
+  OUTCOME_LABELS,
+  NATIVE_TOKEN_SYMBOL,
+  explorerAddressUrl,
+  CHAIN_ID,
+} from "@/lib/contracts";
 import { AIProbabilityBadge } from "./AIProbabilityBadge";
+import { AIEdgeIndicator } from "./AIEdgeIndicator";
+import { ShareMarket } from "./ShareMarket";
 import { BettingPanel } from "./BettingPanel";
 import { ProbabilityChart } from "./ProbabilityChart";
 import clsx from "clsx";
@@ -16,6 +25,8 @@ interface Props {
 
 export function MarketDetail({ address }: Props) {
   const { address: userAddress } = useAccount();
+  const [aiYesPercent, setAiYesPercent] = useState<number | null>(null);
+  const [aiLoading, setAiLoading] = useState(true);
 
   const { data: question } = useReadContract({
     address,
@@ -105,6 +116,8 @@ export function MarketDetail({ address }: Props) {
 
       <h1 className="text-3xl font-bold leading-tight">{question}</h1>
 
+      <ShareMarket marketAddress={address} question={question} />
+
       {closingTime && (
         <p className="text-x1-muted text-sm">
           {isOpen ? "Closes" : "Closed"}{" "}
@@ -136,19 +149,19 @@ export function MarketDetail({ address }: Props) {
                 <div className="text-x1-green font-semibold text-lg">
                   {parseFloat(formatEther(totalYes)).toFixed(3)}
                 </div>
-                <div className="text-x1-muted">YES pool (X1)</div>
+                <div className="text-x1-muted">YES pool ({NATIVE_TOKEN_SYMBOL})</div>
               </div>
               <div>
                 <div className="font-semibold text-lg">
                   {parseFloat(formatEther(totalPool)).toFixed(3)}
                 </div>
-                <div className="text-x1-muted">Total pool (X1)</div>
+                <div className="text-x1-muted">Total pool ({NATIVE_TOKEN_SYMBOL})</div>
               </div>
               <div>
                 <div className="text-red-400 font-semibold text-lg">
                   {parseFloat(formatEther(totalNo)).toFixed(3)}
                 </div>
-                <div className="text-x1-muted">NO pool (X1)</div>
+                <div className="text-x1-muted">NO pool ({NATIVE_TOKEN_SYMBOL})</div>
               </div>
             </div>
           </div>
@@ -160,6 +173,15 @@ export function MarketDetail({ address }: Props) {
               category={category ?? "general"}
               totalYes={BigInt(totalYes)}
               totalNo={BigInt(totalNo)}
+              onScoreLoaded={(score) => {
+                setAiYesPercent(score.yesProbability);
+                setAiLoading(false);
+              }}
+            />
+            <AIEdgeIndicator
+              marketYesPercent={yesPercent}
+              aiYesPercent={aiYesPercent ?? yesPercent}
+              loading={aiLoading}
             />
           </div>
 

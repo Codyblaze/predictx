@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useWriteContract, useWaitForTransactionReceipt, useAccount } from "wagmi";
 import { parseEther, formatEther } from "viem";
 import { PREDICTION_MARKET_ABI } from "@/lib/abis";
-import { explorerTxUrl, CHAIN_ID } from "@/lib/contracts";
+import { explorerTxUrl, CHAIN_ID, NATIVE_TOKEN_SYMBOL } from "@/lib/contracts";
 import clsx from "clsx";
 
 interface Props {
@@ -71,10 +71,10 @@ export function BettingPanel({
         <div className="text-sm text-x1-muted space-y-1 bg-x1-dark rounded-xl p-3">
           <p>Your bets:</p>
           {userYesBet > 0n && (
-            <p className="text-x1-green">YES: {formatEther(userYesBet)} X1</p>
+            <p className="text-x1-green">YES: {formatEther(userYesBet)} {NATIVE_TOKEN_SYMBOL}</p>
           )}
           {userNoBet > 0n && (
-            <p className="text-red-400">NO: {formatEther(userNoBet)} X1</p>
+            <p className="text-red-400">NO: {formatEther(userNoBet)} {NATIVE_TOKEN_SYMBOL}</p>
           )}
         </div>
       )}
@@ -82,7 +82,7 @@ export function BettingPanel({
       {canClaim && (
         <div className="space-y-2">
           <p className="text-x1-green text-sm">
-            Claimable: {parseFloat(formatEther(payout)).toFixed(4)} X1
+            Claimable: {parseFloat(formatEther(payout)).toFixed(4)} {NATIVE_TOKEN_SYMBOL}
           </p>
           <button
             className="btn-primary w-full"
@@ -116,7 +116,7 @@ export function BettingPanel({
           </div>
 
           <div className="space-y-1">
-            <label className="text-sm text-x1-muted">Amount (X1)</label>
+            <label className="text-sm text-x1-muted">Amount ({NATIVE_TOKEN_SYMBOL})</label>
             <input
               type="number"
               min="0"
@@ -147,7 +147,7 @@ export function BettingPanel({
           >
             {isPending || isConfirming
               ? "Confirming…"
-              : `Bet ${side.toUpperCase()} ${amount ? `${amount} X1` : ""}`}
+              : `Bet ${side.toUpperCase()} ${amount ? `${amount} ${NATIVE_TOKEN_SYMBOL}` : ""}`}
           </button>
 
           {isSuccess && txHash && (

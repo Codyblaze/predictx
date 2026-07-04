@@ -5,7 +5,7 @@ import { useReadContract } from "wagmi";
 import { formatEther } from "viem";
 import { formatDistanceToNow } from "date-fns";
 import { PREDICTION_MARKET_ABI } from "@/lib/abis";
-import { CATEGORY_COLORS, OUTCOME_LABELS } from "@/lib/contracts";
+import { CATEGORY_COLORS, OUTCOME_LABELS, NATIVE_TOKEN_SYMBOL } from "@/lib/contracts";
 import { AIProbabilityBadge } from "./AIProbabilityBadge";
 import type { MarketInfo } from "@/types";
 import clsx from "clsx";
@@ -66,7 +66,7 @@ export function MarketCard({ info }: { info: MarketInfo }) {
         <div className="space-y-1">
           <div className="flex justify-between text-xs text-x1-muted">
             <span>YES {yesPool.toFixed(1)}%</span>
-            <span>Pool: {parseFloat(formatEther(totalPool)).toFixed(3)} X1</span>
+            <span>Pool: {parseFloat(formatEther(totalPool)).toFixed(3)} {NATIVE_TOKEN_SYMBOL}</span>
           </div>
           <div className="w-full h-1.5 rounded-full bg-x1-border overflow-hidden">
             <div

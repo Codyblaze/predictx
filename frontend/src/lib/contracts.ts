@@ -8,6 +8,9 @@ export const CHAIN_ID = Number(
   process.env.NEXT_PUBLIC_CHAIN_ID || String(MACULATUS_CHAIN_ID)
 );
 
+export const NATIVE_TOKEN_SYMBOL =
+  CHAIN_ID === MACULATUS_CHAIN_ID ? "X1T" : "X1";
+
 export const OUTCOME_LABELS: Record<number, string> = {
   0: "Unresolved",
   1: "YES",

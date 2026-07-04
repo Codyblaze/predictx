@@ -8,9 +8,16 @@ interface Props {
   category: string;
   totalYes: bigint;
   totalNo: bigint;
+  onScoreLoaded?: (score: Omit<AiScore, "loading">) => void;
 }
 
-export function AIProbabilityBadge({ question, category, totalYes, totalNo }: Props) {
+export function AIProbabilityBadge({
+  question,
+  category,
+  totalYes,
+  totalNo,
+  onScoreLoaded,
+}: Props) {
   const [score, setScore] = useState<AiScore>({
     yesProbability: 50,
     noProbability: 50,
@@ -39,7 +46,9 @@ export function AIProbabilityBadge({ question, category, totalYes, totalNo }: Pr
         const data = await res.json();
 
         if (!cancelled) {
-          setScore({ ...data, loading: false });
+          const loaded = { ...data, loading: false };
+          setScore(loaded);
+          onScoreLoaded?.(loaded);
         }
       } catch {
         if (!cancelled) {
@@ -50,7 +59,7 @@ export function AIProbabilityBadge({ question, category, totalYes, totalNo }: Pr
 
     fetchScore();
     return () => { cancelled = true; };
-  }, [question, category, totalYes, totalNo]);
+  }, [question, category, totalYes, totalNo, onScoreLoaded]);
 
   if (score.loading) {
     return (
