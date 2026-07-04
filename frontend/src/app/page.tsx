@@ -37,11 +37,16 @@ export default function HomePage() {
       <section>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">Latest Markets</h2>
-          <Link href="/markets" className="text-x1-green text-sm hover:underline">
-            View all →
-          </Link>
+          <div className="flex gap-4 text-sm">
+            <Link href="/markets/closed" className="text-x1-muted hover:text-x1-green hover:underline">
+              View closed →
+            </Link>
+            <Link href="/markets" className="text-x1-green hover:underline">
+              View all →
+            </Link>
+          </div>
         </div>
-        <MarketList limit={6} />
+        <MarketList statusFilter="open" limit={6} />
       </section>
 
       <FeatureCards />
